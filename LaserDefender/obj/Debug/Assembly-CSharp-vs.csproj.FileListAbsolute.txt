@@ -1,0 +1,13 @@
+F:\repos\Udemy Unity Course\LaserDefender\Temp\bin\Debug\Assembly-CSharp.dll
+F:\repos\Udemy Unity Course\LaserDefender\Temp\bin\Debug\Assembly-CSharp.pdb
+F:\repos\Udemy Unity Course\LaserDefender\Temp\bin\Debug\UnityEditor.dll
+F:\repos\Udemy Unity Course\LaserDefender\Temp\bin\Debug\UnityEngine.dll
+F:\repos\Udemy Unity Course\LaserDefender\Temp\bin\Debug\UnityEngine.UI.dll
+F:\repos\Udemy Unity Course\LaserDefender\Temp\bin\Debug\Mono.Cecil.dll
+F:\repos\Udemy Unity Course\LaserDefender\Temp\bin\Debug\nunit.framework.dll
+F:\repos\Udemy Unity Course\LaserDefender\Temp\bin\Debug\Unity.DataContract.dll
+F:\repos\Udemy Unity Course\LaserDefender\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+F:\repos\Udemy Unity Course\LaserDefender\obj\Debug\Assembly-CSharp-vs.csprojResolveAssemblyReference.cache
+F:\repos\Udemy Unity Course\LaserDefender\obj\Debug\Assembly-CSharp-vs.csproj.CoreCompileInputs.cache
+F:\repos\Udemy Unity Course\LaserDefender\obj\Debug\Assembly-CSharp.dll
+F:\repos\Udemy Unity Course\LaserDefender\obj\Debug\Assembly-CSharp.pdb
