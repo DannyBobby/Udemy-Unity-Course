@@ -4,12 +4,17 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
     public float speed;
-    public bool shipYPosUnlocked;
+    public bool shipYPosUnlocked;   
+    public GameObject[] weaponSystems;
+    public float rateOfFire;
+    [SerializeField] private float healthPoints;
+    [SerializeField] private bool isInvincible = false;
 
     private float playerXMin = 0.0f;
     private float playerXMax = 0.0f;
     private float playerYMin = 0.0f;
-    private float playerYMax = 0.0f; 
+    private float playerYMax = 0.0f;
+    private int equippedWeapon = 0;
 
     // Use this for initialization
     void Start ()
@@ -20,7 +25,48 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        MoveShip();       
+        if (Input.GetKey(KeyCode.D) || 
+            Input.GetKey(KeyCode.A) || 
+            (shipYPosUnlocked && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)))
+            )
+        {
+            MoveShip();
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightShift))
+        {
+            CycleWeapon();
+        }
+        
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            InvokeRepeating("FireWeapon", 0.000001f, rateOfFire);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            CancelInvoke("FireWeapon");
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.tag == "EnemyProjectile")
+        {
+            Projectile projectile = collider.gameObject.GetComponent<Projectile>();
+            if (!isInvincible)
+            {
+                healthPoints -= projectile.GetDamage();
+            }
+            Debug.Log("Player Hit!");
+            projectile.Hit();
+
+            if (healthPoints <= 0)
+            {
+                FindObjectOfType<LevelManager>().LoadLevel("Start");
+            }
+        }
     }
 
     void DefinePlayerBoundaries()
@@ -88,5 +134,25 @@ public class PlayerController : MonoBehaviour {
 
         // set the new position of the player
         gameObject.transform.position = new Vector3(newXPosition, newYPosition);
+    }
+
+    void CycleWeapon()
+    {
+        equippedWeapon++;
+        if (equippedWeapon > (weaponSystems.Length - 1))
+        {
+            equippedWeapon = 0;
+        }
+    }
+
+    void FireWeapon()
+    {   
+        GameObject beam = Instantiate(weaponSystems[equippedWeapon], 
+                                      transform.position, 
+                                      Quaternion.identity) as GameObject;
+
+        beam.rigidbody2D.velocity = new Vector3(0,
+                                                weaponSystems[equippedWeapon].GetComponent<Projectile>().GetSpeed(), 
+                                                0);
     }
 }

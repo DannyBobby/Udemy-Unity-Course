@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyFormation : MonoBehaviour {
+public class EnemyFormationController : MonoBehaviour {
 
     public float width = 10f;
     public float height = 5f;
@@ -39,6 +39,11 @@ public class EnemyFormation : MonoBehaviour {
 	void Update () {
         MoveFormation();
 	}
+
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(transform.position, new Vector3(width, height));
+    }
 
     void DefineFormationBoundaries()
     {
@@ -110,4 +115,5 @@ public class EnemyFormation : MonoBehaviour {
     {
         return Mathf.Clamp((transform.position.y - vertSpeed), formationYMin, formationYMax);
     }
+
 }

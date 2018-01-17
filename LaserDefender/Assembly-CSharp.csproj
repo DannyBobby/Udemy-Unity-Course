@@ -46,11 +46,14 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\EnemyFormation.cs" />
+     <Compile Include="Assets\Scripts\EnemyFormationController.cs" />
+     <Compile Include="Assets\Scripts\EnemyShip.cs" />
      <Compile Include="Assets\Scripts\EnemySpawner.cs" />
      <Compile Include="Assets\Scripts\LevelManager.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Position.cs" />
+     <Compile Include="Assets\Scripts\Projectile.cs" />
+     <Compile Include="Assets\Scripts\ProjectileShredder.cs" />
      <None Include="Assets\Spritesheet\sheet.xml" />
      <None Include="Assets\license.txt" />
  <Reference Include="UnityEngine.UI">
