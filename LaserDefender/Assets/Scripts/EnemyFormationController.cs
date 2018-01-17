@@ -16,8 +16,7 @@ public class EnemyFormationController : MonoBehaviour {
     private float formationYMax = 0.0f;
     private bool formationDirectionLeft = true;
     private bool changedDirection = false;
-    private int vertStep = 0;
-    
+    private int vertStep = 0;    
 
     void Start () {
         // Flip a coin to see in which direction the formation moves horizontally.
@@ -114,6 +113,5 @@ public class EnemyFormationController : MonoBehaviour {
     float GetNewYPosition(float vertSpeed)
     {
         return Mathf.Clamp((transform.position.y - vertSpeed), formationYMin, formationYMax);
-    }
-
+    }    
 }

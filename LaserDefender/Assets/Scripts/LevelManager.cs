@@ -12,5 +12,5 @@ public class LevelManager : MonoBehaviour {
     public void QuitRequest()
     {
         Application.Quit();
-    }
+    }    
 }

@@ -6,6 +6,7 @@ public class EnemyShip : MonoBehaviour
     [SerializeField] private float healthPoints;
     [SerializeField] private GameObject weaponSystem;
     [SerializeField] private float rateOfFire;
+    [SerializeField] private int scorePoints;
 
     private float fireTimeElapsed = 0.0f;
 
@@ -34,6 +35,7 @@ public class EnemyShip : MonoBehaviour
 
             if (healthPoints <= 0)
             {
+                FindObjectOfType<ScoreKeeper>().UpdateScore(scorePoints);
                 Destroy(gameObject);
             }
         }
