@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     public float rateOfFire;
     [SerializeField] private float healthPoints;
     [SerializeField] private bool isInvincible = false;
+    [SerializeField] private AudioClip laserSFX;
 
     private float playerXMin = 0.0f;
     private float playerXMax = 0.0f;
@@ -64,7 +65,7 @@ public class PlayerController : MonoBehaviour {
 
             if (healthPoints <= 0)
             {
-                FindObjectOfType<LevelManager>().LoadLevel("Start");
+                Die();
             }
         }
     }
@@ -154,5 +155,12 @@ public class PlayerController : MonoBehaviour {
         beam.rigidbody2D.velocity = new Vector3(0,
                                                 weaponSystems[equippedWeapon].GetComponent<Projectile>().GetSpeed(), 
                                                 0);
+
+        AudioSource.PlayClipAtPoint(laserSFX, transform.position);
+    }
+
+    void Die()
+    {
+        FindObjectOfType<LevelManager>().LoadLevel("Win");
     }
 }

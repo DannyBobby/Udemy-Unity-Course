@@ -7,7 +7,9 @@ public class EnemyShip : MonoBehaviour
     [SerializeField] private GameObject weaponSystem;
     [SerializeField] private float rateOfFire;
     [SerializeField] private int scorePoints;
-
+    [SerializeField] private AudioClip laserSFX;
+    [SerializeField] private AudioClip explosionSFX;
+    
     private float fireTimeElapsed = 0.0f;
 
     public float GetHealth()
@@ -35,8 +37,7 @@ public class EnemyShip : MonoBehaviour
 
             if (healthPoints <= 0)
             {
-                FindObjectOfType<ScoreKeeper>().UpdateScore(scorePoints);
-                Destroy(gameObject);
+                DeathRattle();
             }
         }
     }
@@ -50,5 +51,14 @@ public class EnemyShip : MonoBehaviour
         beam.rigidbody2D.velocity = new Vector3(0,
                                                 -weaponSystem.GetComponent<Projectile>().GetSpeed(),
                                                 0);
+
+        AudioSource.PlayClipAtPoint(laserSFX, transform.position);
+    }
+
+    void DeathRattle()
+    {
+        FindObjectOfType<ScoreKeeper>().UpdateScore(scorePoints);
+        AudioSource.PlayClipAtPoint(explosionSFX, transform.position);
+        Destroy(gameObject);
     }
 }

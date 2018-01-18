@@ -18,7 +18,7 @@ public class Brick : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        levelManager = GameObject.FindObjectOfType<LevelManager>();
+        levelManager = FindObjectOfType<LevelManager>();
 
         isBreakableBrick = (this.tag == "Breakable");
         // Keep track of breakable bricks
