@@ -46,6 +46,12 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Attackers\Attacker.cs" />
+     <Compile Include="Assets\Scripts\Attackers\Fox.cs" />
+     <Compile Include="Assets\Scripts\Attackers\Lizard.cs" />
+     <Compile Include="Assets\Scripts\Defenders\Collectable.cs" />
+     <Compile Include="Assets\Scripts\Defenders\Defender.cs" />
+     <Compile Include="Assets\Scripts\Defenders\Projectile.cs" />
      <Compile Include="Assets\Scripts\LevelManager.cs" />
      <Compile Include="Assets\Scripts\MusicPlayer.cs" />
      <Compile Include="Assets\Scripts\OptionsController.cs" />
