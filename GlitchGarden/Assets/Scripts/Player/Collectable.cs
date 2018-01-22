@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Defender : MonoBehaviour {
+public class Collectable : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -15,6 +15,6 @@ public class Defender : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("Defender " + gameObject.name + " trigger enter " + collider.name);
+        //Debug.Log("Collectable " + gameObject.name + " trigger enter " + collider.name);
     }
 }

@@ -1,36 +1,53 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent (typeof(Rigidbody2D))]
 public class Attacker : MonoBehaviour {
+        
+    [SerializeField, Range(0f, 1.5f)] private float currentSpeed;
+    [SerializeField] private int attackDamage;
+    [SerializeField] private Animator animator;
 
-    [Range(0f, 1.5f)] [SerializeField]
-    private float currentSpeed;
+    private GameObject currentTarget;
 
-	// Use this for initialization
-	void Start ()
-    {
-        Rigidbody2D myRigidbody = gameObject.AddComponent<Rigidbody2D>();
-        myRigidbody.isKinematic = true;
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        transform.Translate(Vector3.left * currentSpeed * Time.deltaTime);
-	}
 
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        Debug.Log("Attacker " + gameObject.name + " trigger enter " + collider.name);
-    }
+
 
     public void SetSpeed(float speed)
     {
         currentSpeed = speed;
     }
 
-    void StrikeCurrentTarget(float damage)
+    public void SetCurrentTarget(GameObject obj)
     {
-        Debug.Log(name + " dealt " + damage.ToString() + " to target!");
+        currentTarget = obj;
     }
+
+
+
+
+    // Update is called once per frame
+    void Update ()
+    {
+        transform.Translate(Vector3.left * currentSpeed * Time.deltaTime);
+
+        if (!currentTarget)
+        {
+            animator.SetBool("isAttacking", false);
+        }
+	}
+
+    void StrikeCurrentTarget()
+    {
+        if (currentTarget)
+        {
+            Health targetHealth = currentTarget.GetComponent<Health>();
+
+            if (targetHealth)
+            {
+                targetHealth.TakeDamage(attackDamage);
+                Debug.Log(name + " dealt " + attackDamage.ToString() + " to " + currentTarget.name);
+            }
+        }        
+    }    
  }
