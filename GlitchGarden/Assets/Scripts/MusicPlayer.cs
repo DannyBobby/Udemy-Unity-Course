@@ -15,12 +15,12 @@ public class MusicPlayer : MonoBehaviour {
         {
             music.Stop();
             music.clip = thisLevelMusic;
-            Debug.Log("Music for level" + currentLevel.ToString() + " was loaded.");
+            //Debug.Log("Music for level" + currentLevel.ToString() + " was loaded.");
             music.Play();
         }
         else
         {
-            Debug.Log("No music found for this level. Check the soundtrack array.");
+            Debug.LogError("No music found for this level. Check the soundtrack array.");
         }
     }
 
@@ -32,7 +32,7 @@ public class MusicPlayer : MonoBehaviour {
         }
         else
         {
-            Debug.Log("MUSIC PLAYER ERROR: Volume level must be a value between 0 and 1 inclusive.");
+            Debug.LogError("MUSIC PLAYER ERROR: Volume level must be a value between 0 and 1 inclusive.");
         }
     }
     #endregion
@@ -49,7 +49,7 @@ public class MusicPlayer : MonoBehaviour {
         music.clip = soundtrack[0];
         music.loop = true;
         music.volume = PlayerPrefsManager.GetMasterVolume();
-        Debug.Log("MUSIC MANAGER: " + music.volume.ToString());
+        //Debug.Log("MUSIC MANAGER: " + music.volume.ToString());
 
         music.Play();        
     }

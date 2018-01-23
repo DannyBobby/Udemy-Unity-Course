@@ -59,6 +59,7 @@ public class PlayerPrefsManager : MonoBehaviour {
         }
         else
         {
+            
             Debug.LogError("Difficulty level must be an integer between 0 and 1 inclusive.");
         }
     }

@@ -18,12 +18,12 @@ public class Fox : MonoBehaviour {
         {
             if(obj.GetComponent<Gravestone>())
             {
-                Debug.Log(name + " jumping over " + collider.name);
+                //Debug.Log(name + " jumping over " + collider.name);
                 animator.SetTrigger("triggerJump");            
             }
             else 
             {
-                Debug.Log(name + " attacking " + collider.name);
+                //Debug.Log(name + " attacking " + collider.name);
                 attacker.SetCurrentTarget(obj);
                 animator.SetBool("isAttacking", true);            
             }            

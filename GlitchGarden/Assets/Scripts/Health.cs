@@ -16,7 +16,7 @@ public class Health : MonoBehaviour {
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
-        Debug.Log(gameObject.name + " took " + damageAmount.ToString() + " points of damage.");
+        //Debug.Log(gameObject.name + " took " + damageAmount.ToString() + " points of damage.");
     }
 
     void Die()

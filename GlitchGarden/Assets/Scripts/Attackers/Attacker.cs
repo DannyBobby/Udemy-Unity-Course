@@ -3,7 +3,10 @@ using System.Collections;
 
 [RequireComponent (typeof(Rigidbody2D))]
 public class Attacker : MonoBehaviour {
-        
+
+    [Tooltip ("Average number of seconds between appearances")]
+    public float seenEverySeconds;    
+
     [SerializeField, Range(0f, 1.5f)] private float currentSpeed;
     [SerializeField] private int attackDamage;
     [SerializeField] private Animator animator;
@@ -37,8 +40,8 @@ public class Attacker : MonoBehaviour {
         if(!animator.GetCurrentAnimatorStateInfo(0).IsTag("Attacking"))
         {
             transform.Translate(Vector3.left * currentSpeed * Time.deltaTime);
-        }
-	}
+        }        
+    }
 
     void StrikeCurrentTarget()
     {
@@ -49,7 +52,7 @@ public class Attacker : MonoBehaviour {
             if (targetHealth)
             {
                 targetHealth.TakeDamage(attackDamage);
-                Debug.Log(name + " dealt " + attackDamage.ToString() + " to " + currentTarget.name);
+                //Debug.Log(name + " dealt " + attackDamage.ToString() + " to " + currentTarget.name);
             }
         }        
     }    

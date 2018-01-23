@@ -53,7 +53,7 @@ public class LevelManager : MonoBehaviour {
         }
         else
         {
-            Debug.Log("Auto load disabled. Please enter an interval greater than zero seconds.");
+            Debug.LogError("Auto load disabled. Please enter an interval greater than zero seconds.");
         }
 
         musicPlayer = FindObjectOfType<MusicPlayer>();
@@ -63,7 +63,7 @@ public class LevelManager : MonoBehaviour {
     {
         previousLevel = currentLevel;
         currentLevel = Application.loadedLevel;
-        Debug.Log("LEVEL MANAGER: Current level: " + currentLevel.ToString() + " & Previous level: " + previousLevel.ToString());
+        //Debug.Log("LEVEL MANAGER: Current level: " + currentLevel.ToString() + " & Previous level: " + previousLevel.ToString());
 
         if ((previousLevel == 1 && currentLevel == 2) || 
             (previousLevel == 2 && currentLevel == 1))
