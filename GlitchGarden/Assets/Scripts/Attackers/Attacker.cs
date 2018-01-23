@@ -29,11 +29,14 @@ public class Attacker : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        transform.Translate(Vector3.left * currentSpeed * Time.deltaTime);
-
         if (!currentTarget)
         {
             animator.SetBool("isAttacking", false);
+        }
+
+        if(!animator.GetCurrentAnimatorStateInfo(0).IsTag("Attacking"))
+        {
+            transform.Translate(Vector3.left * currentSpeed * Time.deltaTime);
         }
 	}
 

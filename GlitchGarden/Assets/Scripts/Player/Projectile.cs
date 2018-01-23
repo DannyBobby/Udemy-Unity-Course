@@ -4,12 +4,7 @@ using System.Collections;
 public class Projectile : MonoBehaviour {
 
     [SerializeField] private float speed;
-    [SerializeField] private float damage;
-
-    public float GetDamage()
-    {
-        return damage;
-    }   
+    [SerializeField] private int damage; 
 	
 	// Update is called once per frame
 	void Update () {
@@ -18,6 +13,12 @@ public class Projectile : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        //Debug.Log("Projectile " + gameObject.name + " trigger enter " + collider.name);
-    }        
+        GameObject obj = collider.gameObject;
+
+        if (obj.GetComponent<Attacker>())
+        {
+            obj.GetComponent<Health>().TakeDamage(damage);
+            Destroy(gameObject);
+        }      
+    }
 }

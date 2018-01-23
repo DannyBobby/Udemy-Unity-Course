@@ -3,9 +3,10 @@ using System.Collections;
 
 public class Shooter : MonoBehaviour {
 
-    [SerializeField] private GameObject projectile,
-                                        projectileParent,
-                                        gun;
+    [SerializeField]
+    private GameObject projectile,
+                       gun,
+                       projectileParent;
 
     void Start()
     {
