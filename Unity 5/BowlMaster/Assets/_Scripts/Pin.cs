@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pin : MonoBehaviour {
 
+    [SerializeField] private float distanceToRaise;
     [SerializeField] private float standingThreshold;
 	
 	public bool IsStanding()
@@ -15,4 +16,19 @@ public class Pin : MonoBehaviour {
 
         return (tiltInX < standingThreshold && tiltInZ < standingThreshold);
     }    
+
+    public void RaiseIfStanding()
+    {
+        if (IsStanding())
+        {
+            transform.Translate(0f, distanceToRaise, 0f, Space.World);
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        }
+    }
+
+    public void Lower()
+    {
+        transform.Translate(0f, -distanceToRaise, 0f, Space.World);
+        GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+    }
 }

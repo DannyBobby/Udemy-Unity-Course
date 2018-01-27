@@ -6,13 +6,14 @@ public class Ball : MonoBehaviour {
 
     [SerializeField] private Vector3 launchVelocity;
 
-    public bool inPlay = false;
     private Rigidbody rigidBody;
     private AudioSource audioSource;
     private Vector3 ballStartPos;
 
-	// Use this for initialization
-	void Start ()
+    public bool inPlay = false;
+
+    // Use this for initialization
+    void Start ()
     {
         rigidBody = GetComponent<Rigidbody>();
         rigidBody.useGravity = false;
