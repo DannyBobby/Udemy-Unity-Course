@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Pin : MonoBehaviour {
 
@@ -23,6 +21,7 @@ public class Pin : MonoBehaviour {
         {
             transform.Translate(0f, distanceToRaise, 0f, Space.World);
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            transform.rotation = Quaternion.identity;
         }
     }
 

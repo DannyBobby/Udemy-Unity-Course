@@ -6,18 +6,29 @@ public class Ball : MonoBehaviour {
 
     [SerializeField] private Vector3 launchVelocity;
 
+    private Animator pinSetterAnimator;
     private Rigidbody rigidBody;
     private AudioSource audioSource;
     private Vector3 ballStartPos;
 
     public bool inPlay = false;
+    public bool isPlayable;
 
     // Use this for initialization
     void Start ()
     {
+        pinSetterAnimator = FindObjectOfType<PinSetter>().GetComponentInParent<Animator>();
         rigidBody = GetComponent<Rigidbody>();
         rigidBody.useGravity = false;
         ballStartPos = transform.position;
+    }
+
+    void Update()
+    {
+        if (!isPlayable && (rigidBody.velocity.x + rigidBody.velocity.y + rigidBody.velocity.z) > 0)
+        {
+            Reset();
+        }
     }
 
     public void Launch(Vector3 velocity)
@@ -31,11 +42,12 @@ public class Ball : MonoBehaviour {
 
     public void Reset()
     {
-        Debug.Log("Resetting ball");
+        //Debug.Log("Resetting ball");
         inPlay = false;
         rigidBody.useGravity = false;
         rigidBody.velocity = new Vector3(0f, 0f, 0f);
         rigidBody.angularVelocity = new Vector3(0f, 0f, 0f);
+        transform.rotation = Quaternion.identity;
         transform.position = ballStartPos;        
-    }
+    }    
 }

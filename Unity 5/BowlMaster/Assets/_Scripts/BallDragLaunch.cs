@@ -20,7 +20,7 @@ public class BallDragLaunch : MonoBehaviour {
 	}
 
     public void DragStart()
-    {
+    {        
         beginPos = Input.mousePosition;
         beginTime = Time.time;
     }
@@ -42,9 +42,9 @@ public class BallDragLaunch : MonoBehaviour {
         }
 
         Vector3 velocity = new Vector3(speedX, 0f, speedZ);
-        Debug.Log("Velocity vector: " + velocity.ToString());
+        //Debug.Log("Velocity vector: " + velocity.ToString());
 
-        if (!ball.inPlay)
+        if (!ball.inPlay && ball.isPlayable)
         {
             ball.Launch(velocity);
         }
@@ -52,7 +52,7 @@ public class BallDragLaunch : MonoBehaviour {
 
     public void MoveStart(float xNudge)
     {
-        if (!ball.inPlay)
+        if (!ball.inPlay && ball.isPlayable)
         {
             transform.Translate(xNudge, 0f, 0f, Space.World);
         }        

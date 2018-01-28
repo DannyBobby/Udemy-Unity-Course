@@ -1,25 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class LaneBox : MonoBehaviour {
 
-    [SerializeField] private PinManager pinManager;
+    [SerializeField] private GameManager gm;
 
     // Use this for initialization
     void Start()
     {
-        if (!pinManager)
+        if (!gm)
         {
-            pinManager = FindObjectOfType<PinManager>();
+            gm = FindObjectOfType<GameManager>();
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<Ball>())
+        Ball ball = other.GetComponent<Ball>();
+
+        if (ball)
         {
-            pinManager.ballEnteredBox = true;
+            gm.EvaluateGameState();
         }
     }
 }

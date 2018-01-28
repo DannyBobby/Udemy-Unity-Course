@@ -8,7 +8,21 @@ public class ActionMaster {
     private int[] bowls = new int[21];
     private int bowl = 1;
 
-    public Action Bowl(int pins)
+    public static Action NextAction(List<int> pinFalls)
+    {
+        ActionMaster am = new ActionMaster();
+        Action currentAction = new Action();
+
+        foreach(int pinFall in pinFalls)
+        {
+            currentAction = am.Bowl(pinFall);
+        }
+
+        return currentAction;
+    }
+
+    // TODO make this method private in the future!
+    private Action Bowl(int pins)
     {
         if (pins > 10 || pins < 0) {throw new UnityException("Pin count must be between 0 and 10 inclusive.");}
 
