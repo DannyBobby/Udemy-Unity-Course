@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 public static class ActionMaster {
 	public enum Action {Tidy, Reset, EndTurn, EndGame, Undefined};

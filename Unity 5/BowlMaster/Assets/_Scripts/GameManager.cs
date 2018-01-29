@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 public class GameManager : MonoBehaviour {
 
@@ -49,7 +48,6 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(3.0f);
 
         rolls.Add(pinCounter.GetCountPinsFallen());
-        scoreFrames = ScoreMaster.ScoreFrames(rolls);
 
         try
         {

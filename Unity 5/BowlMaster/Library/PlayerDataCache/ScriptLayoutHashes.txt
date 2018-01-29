@@ -119,6 +119,7 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.PinCounter
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.CallbackExecutor
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
+9c86f20365b16ad96fc7a23b8bdace4f Assembly-CSharp.dll:.ScoreDisplay
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CameraController
 82a39d654998b5c250e63b6efc414917 Assembly-CSharp.dll:.Ball
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
@@ -150,4 +151,3 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.PinCountDisplay
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.PinShredder
-9c86f20365b16ad96fc7a23b8bdace4f Assembly-CSharp.dll:.ScoreDisplay

@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Ball : MonoBehaviour {
 
     [SerializeField] private Vector3 launchVelocity;
 
-    private Animator pinSetterAnimator;
     private Rigidbody rigidBody;
     private AudioSource audioSource;
     private Vector3 ballStartPos;
@@ -17,7 +14,6 @@ public class Ball : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        pinSetterAnimator = FindObjectOfType<PinSetter>().GetComponentInParent<Animator>();
         rigidBody = GetComponent<Rigidbody>();
         rigidBody.useGravity = false;
         ballStartPos = transform.position;

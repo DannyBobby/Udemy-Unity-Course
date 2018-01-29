@@ -298,14 +298,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\ActionMaster.cs" />
-    <Compile Include="Assets\_Scripts\ActionMasterOld.cs" />
     <Compile Include="Assets\_Scripts\Ball.cs" />
     <Compile Include="Assets\_Scripts\BallDragLaunch.cs" />
     <Compile Include="Assets\_Scripts\BowlingPinRack.cs" />
     <Compile Include="Assets\_Scripts\CameraController.cs" />
     <Compile Include="Assets\_Scripts\GameManager.cs" />
     <Compile Include="Assets\_Scripts\LaneBox.cs" />
-    <Compile Include="Assets\_Scripts\OurScoreDisplayTest1.cs" />
     <Compile Include="Assets\_Scripts\Pin.cs" />
     <Compile Include="Assets\_Scripts\PinCountDisplay.cs" />
     <Compile Include="Assets\_Scripts\PinCounter.cs" />
