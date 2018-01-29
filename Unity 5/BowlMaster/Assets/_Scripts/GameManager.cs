@@ -5,14 +5,12 @@ using System.Linq;
 
 public class GameManager : MonoBehaviour {
 
-    [SerializeField] Animator pinSetterAnimator;
-    [SerializeField] PinCounter pinCounter;
-    [SerializeField] Ball ball;
-
-    private List<int> pinFalls;
+    [SerializeField] private Animator pinSetterAnimator;
+    [SerializeField] private PinCounter pinCounter;
+    [SerializeField] private Ball ball;
+    [SerializeField] private ScoreDisplay scoreDisplay;
+    private List<int> rolls;
     private List<int> scoreFrames;
-
-    private bool gameStateFrozen = false;
 
 	// Use this for initialization
 	void Start ()
@@ -20,26 +18,9 @@ public class GameManager : MonoBehaviour {
         pinSetterAnimator = FindObjectOfType<PinSetter>().GetComponentInParent<Animator>();
         pinCounter = FindObjectOfType<PinCounter>();
         ball = FindObjectOfType<Ball>();
+        scoreDisplay = FindObjectOfType<ScoreDisplay>();
 
-        pinFalls = new List<int>();
-
-
-        /* DEBUGGING SCORE MASTER!!!*/
-        //string frameScore = "Frame Score: ";
-        //string cumuScore = "Cumulative Score ";
-
-        //int[] rolls = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 10, 2, 3 };
-        //foreach (int i in ScoreMaster.ScoreFrames(rolls.ToList()))
-        //{
-        //    frameScore += i.ToString() + ", ";
-        //}
-        //foreach (int i in ScoreMaster.ScoreCumulative(rolls.ToList()))
-        //{
-        //    cumuScore += i.ToString() + ", ";
-        //}
-        //Debug.Log(frameScore);
-        //Debug.Log(cumuScore);
-
+        rolls = new List<int>();
     }
 
     // Update is called once per frame
@@ -48,12 +29,12 @@ public class GameManager : MonoBehaviour {
         if(pinSetterAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Idle"))
         {
             pinCounter.UpdatePinDisplay();
-            ball.isPlayable = false;
+            ball.isPlayable = true;
         }
         else
         {
             pinCounter.FreezePinDisplay();
-            ball.isPlayable = true;
+            ball.isPlayable = false;
         }        
     }      
  
@@ -66,29 +47,32 @@ public class GameManager : MonoBehaviour {
     IEnumerator UpdateGameState()
     {
         yield return new WaitForSeconds(3.0f);
-        int fallenPins = pinCounter.GetCountPinsFallen();
-        pinFalls.Add(fallenPins);
 
-        scoreFrames = ScoreMaster.ScoreFrames(pinFalls);
-        ActionMaster.Action nextAction = ActionMaster.NextAction(pinFalls);
+        rolls.Add(pinCounter.GetCountPinsFallen());
+        scoreFrames = ScoreMaster.ScoreFrames(rolls);
 
-        Debug.Log("ActionMaster says: " + nextAction.ToString());
+        try
+        {
+            scoreDisplay.FillRolls(rolls);
+            scoreDisplay.FillFrames(ScoreMaster.ScoreCumulative(rolls));
+        }
+        catch { Debug.LogWarning("scoreDisplay.FillRollCard failed."); }
+
+        ActionMaster.Action nextAction = ActionMaster.NextAction(rolls);
+
         switch (nextAction)
         {
             case ActionMaster.Action.Tidy:
-                Debug.Log("Triggering Tidy!");
                 pinSetterAnimator.SetTrigger("tgr_Tidy");
                 pinCounter.FinalizePinCount();
                 ball.Reset();
                 break;
             case ActionMaster.Action.Reset:
-                Debug.Log("Triggering Reset!");
                 pinSetterAnimator.SetTrigger("tgr_Reset");
                 pinCounter.ResetPinCount();
                 ball.Reset();
                 break;
             case ActionMaster.Action.EndTurn:
-                Debug.Log("Triggering Reset!");
                 pinSetterAnimator.SetTrigger("tgr_Reset");
                 pinCounter.ResetPinCount();
                 ball.Reset();

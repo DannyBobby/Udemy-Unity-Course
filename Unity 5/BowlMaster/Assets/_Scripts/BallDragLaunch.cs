@@ -54,7 +54,14 @@ public class BallDragLaunch : MonoBehaviour {
     {
         if (!ball.inPlay && ball.isPlayable)
         {
-            transform.Translate(xNudge, 0f, 0f, Space.World);
+            float ballWidth = ball.transform.localScale.y;
+            float laneBoxWidth = FindObjectOfType<LaneBox>().GetComponentInParent<Transform>().localScale.x;
+            float xMin = -(laneBoxWidth/2 - ballWidth/2);
+            float xMax = (laneBoxWidth/2 - ballWidth/2);
+
+            ball.transform.position = new Vector3(Mathf.Clamp(ball.transform.position.x + xNudge, xMin, xMax), 
+                                                  ball.transform.position.y, 
+                                                  ball.transform.position.z);
         }        
     }
 }

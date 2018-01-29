@@ -298,7 +298,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\ActionMaster.cs" />
-    <Compile Include="Assets\_Scripts\ActionMaster2.cs" />
+    <Compile Include="Assets\_Scripts\ActionMasterOld.cs" />
     <Compile Include="Assets\_Scripts\Ball.cs" />
     <Compile Include="Assets\_Scripts\BallDragLaunch.cs" />
     <Compile Include="Assets\_Scripts\BowlingPinRack.cs" />
@@ -311,6 +311,7 @@
     <Compile Include="Assets\_Scripts\PinCounter.cs" />
     <Compile Include="Assets\_Scripts\PinSetter.cs" />
     <Compile Include="Assets\_Scripts\PinShredder.cs" />
+    <Compile Include="Assets\_Scripts\ScoreDisplay.cs" />
     <Compile Include="Assets\_Scripts\ScoreMaster.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
